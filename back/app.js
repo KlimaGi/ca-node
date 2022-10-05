@@ -23,3 +23,11 @@ app.get('/user/:name', (req, res) => {
   //siunciam uzklausa, grazinam i fornta atsakyma, kitaip pakibs frontas
   res.send({ names })
 })
+
+app.delete('/user/:name', (req, res) => {
+  const { name } = req.params;
+  const temp = names.filter((dbname) => dbname !== name);
+  names = temp;
+
+  res.send({ names })
+})

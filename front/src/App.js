@@ -12,6 +12,13 @@ function App() {
     console.log('data', data);
   }
 
+  async function handleDelete(name) {
+    const res = await fetch('http://localhost:4000/user/' + name, { method: 'DELETE' });
+    const data = await res.json();
+    setNames(data.names);
+    console.log('data deleted', data);
+  }
+
   return (
     <div className='d-flex f-direction'>
       <h3>node example</h3>
@@ -22,7 +29,15 @@ function App() {
       </div>
 
       <div className='container'>
-        {names.map((name, i) => <div key={i}>{name}</div>)}
+        {names.map((name, i) => (
+          <div
+            className='item'
+            key={i}
+          >
+            <div>{name}</div>
+            <button onClick={() => handleDelete(name)} >X</button>
+          </div>
+        ))}
       </div>
     </div>
   );

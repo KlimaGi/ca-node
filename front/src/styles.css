@@ -1,7 +1,13 @@
+:root {
+  --dark: #535387;
+  --grey: #a5a5c0;
+  --light-grey: #d0d0e7;
+  --light: #e2e2f0;
+}
 *{
   box-sizing: border-box;
-  color: #535387;
-  text-align: center;
+  color: var(--dark);
+  font-size: 1.1rem;
 }
 
 .d-flex {
@@ -13,8 +19,7 @@
 }
 .container {
   width: 20rem;
-  height: 20rem;
-  background-color: #e2e2f0;
+  background-color: var(--light);
   align-self: center;
 }
 
@@ -31,6 +36,13 @@ padding: 0.5rem;
 }
 
 .button:hover{
-  background-color: #d0d0e7;
+  background-color: var(--light-grey);
   border-style: none;
+}
+
+.item{
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: var(--light);
 }
