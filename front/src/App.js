@@ -19,12 +19,36 @@ function App() {
     console.log('data deleted', data);
   }
 
+  async function send() {
+    const user = {
+      name: "gi",
+      cat: false,
+    }
+
+    const options = {
+      method: 'POST',
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify(user)
+    }
+
+    const res = await fetch("http://localhost:4000/createUser", options);
+    const data = await res.json();
+    console.log('data', data);
+  }
+
   return (
     <div className='d-flex f-direction'>
       <h3>node example</h3>
 
       <div className="main d-flex">
-        <input ref={inpRef} placeholder='username' className='input' type='text'></input>
+        <input
+          ref={inpRef}
+          placeholder='username'
+          className='input'
+          type='text'
+        />
         <button onClick={addName} className='button'>Add</button>
       </div>
 
@@ -38,6 +62,10 @@ function App() {
             <button onClick={() => handleDelete(name)} >X</button>
           </div>
         ))}
+      </div>
+
+      <div className='container'>
+        <button onClick={send} className="button">send data</button>
       </div>
     </div>
   );

@@ -5,6 +5,9 @@ const app = express();
 const cors = require('cors');
 
 app.use(cors());
+// is front'o galiu siusti objektus, back'as lengvai juos skaityti gales
+app.use(express.json());
+
 app.listen(4000);
 
 app.get("/info", (req, res) => {
@@ -22,6 +25,16 @@ app.get('/user/:name', (req, res) => {
 
   //siunciam uzklausa, grazinam i fornta atsakyma, kitaip pakibs frontas
   res.send({ names })
+})
+
+let usersData = [];
+
+app.post("/createUser", (req, res) => {
+  console.log('req.body', req.body);
+
+  usersData.push(req.body);
+  console.log('usersData', usersData);
+  res.send({ ok: "post is working" })
 })
 
 app.delete('/user/:name', (req, res) => {

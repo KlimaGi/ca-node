@@ -21,6 +21,7 @@
   width: 20rem;
   background-color: var(--light);
   align-self: center;
+  margin: 1rem;
 }
 
 .input{
