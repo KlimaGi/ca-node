@@ -4,6 +4,7 @@ import './styles.css';
 function App() {
   const inpRef = useRef();
   const userNameRef = useRef();
+  const imageRef = useRef();
   const colorRef = useRef();
   const [names, setNames] = useState([]);
   const [users, setUsers] = useState([]);
@@ -26,6 +27,7 @@ function App() {
     const userData = {
       name: userNameRef.current.value,
       color: colorRef.current.value,
+      image: imageRef.current.value,
     }
 
     const options = {
@@ -71,9 +73,10 @@ function App() {
       <div className='container'>
         <input ref={userNameRef} placeholder='enter your name' className='input'
           type='text' />
-
+        <input ref={imageRef} placeholder='your image url' className='input' />
         <div className='item'>
           <label>Pick your favorite color</label>
+
           <input
             ref={colorRef}
             type='color'
@@ -83,10 +86,12 @@ function App() {
         <button onClick={send} className="button">send data</button>
       </div>
 
-      <div className='d-flex'>
-        {users.map(({ name, color }) => (
-          <div className='user-item' style={{ borderLeft: `8px solid ${color}` }}>
-            {name}
+      <div className='card-container'>
+        {users.map(({ name, color, image }) => (
+          <div key={color} className='user-item' style={{ borderLeft: `8px solid ${color}` }}>
+            <img className='user-image' src={image} alt='user' />
+            <p>{name}</p>
+
           </div>))}
       </div>
 
