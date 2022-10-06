@@ -3,7 +3,10 @@ import './styles.css';
 
 function App() {
   const inpRef = useRef();
+  const userNameRef = useRef();
+  const colorRef = useRef();
   const [names, setNames] = useState([]);
+  const [users, setUsers] = useState([]);
 
   async function addName() {
     const res = await fetch('http://localhost:4000/user/' + inpRef.current.value);
@@ -20,9 +23,9 @@ function App() {
   }
 
   async function send() {
-    const user = {
-      name: "gi",
-      cat: false,
+    const userData = {
+      name: userNameRef.current.value,
+      color: colorRef.current.value,
     }
 
     const options = {
@@ -30,11 +33,12 @@ function App() {
       headers: {
         "content-type": "application/json"
       },
-      body: JSON.stringify(user)
+      body: JSON.stringify(userData)
     }
 
     const res = await fetch("http://localhost:4000/createUser", options);
     const data = await res.json();
+    setUsers(data);
     console.log('data', data);
   }
 
@@ -65,10 +69,33 @@ function App() {
       </div>
 
       <div className='container'>
+        <input ref={userNameRef} placeholder='enter your name' className='input'
+          type='text' />
+
+        <div className='item'>
+          <label>Pick your favorite color</label>
+          <input
+            ref={colorRef}
+            type='color'
+            className='color-block'
+          />
+        </div>
         <button onClick={send} className="button">send data</button>
       </div>
+
+      <div className='d-flex'>
+        {users.map(({ name, color }) => (
+          <div className='user-item' style={{ borderLeft: `8px solid ${color}` }}>
+            {name}
+          </div>))}
+      </div>
+
     </div>
   );
 }
 
 export default App;
+// * create mini aplication where in front end user provides his name and photo
+// * with post request you send it to back end, save it to array
+// after item is saved in array in back end, all array is sent back to the front
+// when array received in front items are displayed with map

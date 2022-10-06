@@ -34,7 +34,7 @@ app.post("/createUser", (req, res) => {
 
   usersData.push(req.body);
   console.log('usersData', usersData);
-  res.send({ ok: "post is working" })
+  res.send(usersData)
 })
 
 app.delete('/user/:name', (req, res) => {
