@@ -55,3 +55,6 @@ sayCount('cube');
 sayFirstAndLast('cube');
 removeUppercase('The quick Brown fox jumps');
 multiplyNumbers('The2 quick Brown fox jumps');
+
+const validateEmail = require("./modules/someFunc");
+validateEmail('fsdfsf@');
