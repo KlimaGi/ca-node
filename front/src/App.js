@@ -13,7 +13,7 @@ function App() {
     const res = await fetch('http://localhost:4000/user/' + inpRef.current.value);
     const data = await res.json();
     setNames(data.names);
-    console.log('data', data);
+    inpRef.current.value = '';
   }
 
   async function handleDelete(name) {
@@ -42,6 +42,10 @@ function App() {
     const data = await res.json();
     setUsers(data);
     console.log('data', data);
+
+    userNameRef.current.value = '';
+    colorRef.current.value = '';
+    imageRef.current.value = '';
   }
 
   return (
@@ -88,8 +92,14 @@ function App() {
 
       <div className='card-container'>
         {users.map(({ name, color, image }) => (
-          <div key={color} className='user-item' style={{ borderLeft: `8px solid ${color}` }}>
-            <img className='user-image' src={image} alt='user' />
+          <div
+            key={color}
+            className='user-item'
+            style={{ borderLeft: `8px solid ${color}` }}>
+            <img
+              className='user-image'
+              src={image}
+              alt='user' />
             <p>{name}</p>
 
           </div>))}
@@ -102,5 +112,13 @@ function App() {
 export default App;
 // * create mini aplication where in front end user provides his name and photo
 // * with post request you send it to back end, save it to array
-// after item is saved in array in back end, all array is sent back to the front
-// when array received in front items are displayed with map
+// * after item is saved in array in back end, all array is sent back to the front
+// * when array received in front items are displayed with map
+
+// create application where user can add products to fake internet shop
+// each product should have these props: photo, price, title
+// products should be uploaded to back-and
+// products should be shown in front end
+// there should be possibility to delete product from back end (send request from front-end)
+// if that was easy, add shopping car logic
+// user adds product to shopping car and cart shows total amount of products and total price

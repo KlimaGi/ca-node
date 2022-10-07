@@ -44,3 +44,14 @@ app.delete('/user/:name', (req, res) => {
 
   res.send({ names })
 })
+
+
+
+const { sayHi, sayGoodbye, sayCount, sayFirstAndLast, removeUppercase, multiplyNumbers } = require("./modules/sayHello");
+
+sayHi('Bea');
+sayGoodbye('Loui');
+sayCount('cube');
+sayFirstAndLast('cube');
+removeUppercase('The quick Brown fox jumps');
+multiplyNumbers('The2 quick Brown fox jumps');
