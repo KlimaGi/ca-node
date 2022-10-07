@@ -13,10 +13,7 @@ module.exports = {
     res.send({ names })
   },
   createUser: (req, res) => {
-    console.log('req.body', req.body);
-
     usersData.push(req.body);
-    console.log('usersData', usersData);
     res.send(usersData)
   },
   deleteUser: (req, res) => {

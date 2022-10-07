@@ -70,3 +70,16 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.chat-container {
+  border: 1px solid var(--dark);
+  width: 100%;
+  height: 90vh;
+}
+.msg {
+  padding: 0.5rem;
+  background-color: var(--light);
+  margin: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
